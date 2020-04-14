@@ -11,6 +11,19 @@ def welcome_user
     user_name
 end
 
+# This def is a helper method to request a nick name
+def nick_name(poke)
+    puts "Would you like to give #{poke} a nickname? yes or no?"
+    answer = gets.chomp
+    if answer == "yes"
+        puts "What is #{poke}'s nickmane?"
+        name = gets.chomp
+    else
+        name = nil
+    end
+    name
+end
+
 # In this def we are asking the user to pick a starter pokemon (which has to be one of the three to advance in the app)
 # then adding that pokemon to the pokemon
 def pick_starter
@@ -21,12 +34,14 @@ def pick_starter
         pokemon = gets.chomp
     end
 
+    n_name = nick_mane(pokemon)
+
     if pokemon == "bulbasaur"
-        Pokemon.create(species: pokemon, type: "grass")
+        Pokemon.create(nickname: n_name, species: pokemon, type: "grass")
     elsif pokemon == "charmander"
-        Pokemon.create(species: pokemon, type: "fire")
+        Pokemon.create(nickname: n_name, species: pokemon, type: "fire")
     elsif pokemon == "squirtle"
-        Pokemon.create(species: pokemon, type: "water")
+        Pokemon.create(nickname: n_name, species: pokemon, type: "water")
     end
     pokemon
 end
