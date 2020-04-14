@@ -20,3 +20,4 @@ parasect = Pokemon.create(nickname: "Parasect", species: "Parasect", element: "g
 victreebel = Pokemon.create(nickname: "Victreebel", species: "Victreebel", element: "grass")
 exeggutor = Pokemon.create(nickname: "Exeggutor", species: "Exeggutor", element: "grass")
 
+edgar =Trainer.create(name)
