@@ -1,6 +1,8 @@
 require 'rest-client'
 require_relative '../config/environment'
+require_relative '../app/models'
 require 'pry'
+
 
 def welcome_user
     puts "Hello new trainer, what is your name?"
