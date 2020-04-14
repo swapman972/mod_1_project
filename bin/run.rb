@@ -3,12 +3,12 @@ require_relative '../config/environment'
 require 'pry'
 
 def welcome_user
-    puts "Hello User what is your name"
+    puts "Hello new trainer, what is your name?"
     user_name = gets.chomp
     user_name
 end
 
-def get_food
+def pick_starter
     puts "What is your fav food"
     fav_food = gets.chomp
     food = Food.find_or_create_by(name: fav_food)
@@ -17,7 +17,7 @@ end
 
 def run
     user_name = welcome_user
-    puts "Welcome #{user_name}"
+    puts "Welcome to the Elite 3 #{user_name}!!"
     food = get_food
     puts "Awesome! #{food.name} is my fav too"
 
