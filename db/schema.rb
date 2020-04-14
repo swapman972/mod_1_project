@@ -10,6 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_04_14_224146) do
+
+  create_table "pokemons", force: :cascade do |t|
+    t.string "nickname"
+    t.string "species"
+    t.string "element"
+  end
+
+  create_table "trainer_pokemons", force: :cascade do |t|
+    t.integer "trainer_id"
+    t.integer "pokemon_id"
+    t.boolean "fainted", default: false
+  end
+
+  create_table "trainers", force: :cascade do |t|
+    t.string "name"
+    t.integer "nb_of_pokemon"
+  end
 
 end
