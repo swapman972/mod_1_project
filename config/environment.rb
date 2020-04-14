@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'dotenv/load '
+require 'dotenv/load'
 Bundler.require
 
 
