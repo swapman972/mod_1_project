@@ -20,4 +20,10 @@ parasect = Pokemon.create(nickname: "Parasect", species: "Parasect", element: "g
 victreebel = Pokemon.create(nickname: "Victreebel", species: "Victreebel", element: "grass")
 exeggutor = Pokemon.create(nickname: "Exeggutor", species: "Exeggutor", element: "grass")
 
-edgar =Trainer.create(name)
+# you can add the pokemon that you want by using the following line as an example 
+# edgar.pokemons << blatoise and then it will up on in the trainer_pokemons table
+# and edgar.pokemon
+edgar =Trainer.create(name:"Edgar")
+# edgar.pokemons << blatoise
+jordan =Trainer.create(name:"Jordan")
+elias =Trainer.create(name:"Elias")
