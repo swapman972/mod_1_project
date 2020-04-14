@@ -7,5 +7,4 @@ fire_data = JSON.parse(response)
 fire_data.each do |pokemon|
     binding.pry
     ""
-
 end
