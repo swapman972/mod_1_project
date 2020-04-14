@@ -1,5 +1,6 @@
 require 'rest-client'
 require_relative '../config/environment'
+require_relative '../app/models'
 require 'pry'
 
 # In this def we will ask the user for his name and add him to the trainer table
