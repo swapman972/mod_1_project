@@ -2,23 +2,23 @@ Pokemon.delete_all
 Trainer.delete_all
 TrainerPokemon.delete_all
 
-charmander = Pokemon.create(nickname: "Charizard", species: "Charizard", element: "fire")
-ninetales = Pokemon.create(nickname: "Ninetales", species: "Ninetales", element: "fire")
-arcanie = Pokemon.create(nickname: "Arcanine", species: "Arcanine", element: "fire")
-rapidash = Pokemon.create(nickname: "Rapidash", species: "Rapidash", element: "fire")
-magmar = Pokemon.create(nickname: "Magmar", species: "Magmar", element: "fire")
+charmander = Pokemon.create(species: "Charizard", element: "fire")
+ninetales = Pokemon.create(species: "Ninetales", element: "fire")
+arcanie = Pokemon.create(species: "Arcanine", element: "fire")
+rapidash = Pokemon.create(species: "Rapidash", element: "fire")
+magmar = Pokemon.create(species: "Magmar", element: "fire")
 
-blatoise = Pokemon.create(nickname: "Blatoise", species: "Blatoise", element: "water")
-golduck = Pokemon.create(nickname: "Golduck", species: "Golduck", element: "water")
-poliwarth = Pokemon.create(nickname: "Poliwarth", species: "Poliwarth", element: "water")
-tentacruel = Pokemon.create(nickname: "Tentacruel", species: "Tentacruel", element: "water")
-slowbro = Pokemon.create(nickname: "Slowbro", species: "Slowbro", element: "water")
+blatoise = Pokemon.create(species: "Blatoise", element: "water")
+golduck = Pokemon.create(species: "Golduck", element: "water")
+poliwarth = Pokemon.create(species: "Poliwarth", element: "water")
+tentacruel = Pokemon.create(species: "Tentacruel", element: "water")
+slowbro = Pokemon.create(species: "Slowbro", element: "water")
 
-venusaur = Pokemon.create(nickname: "Venusaur", species: "Venusaur", element: "grass")
-vileplume = Pokemon.create(nickname: "Vileplume", species: "Vileplume", element: "grass")
-parasect = Pokemon.create(nickname: "Parasect", species: "Parasect", element: "grass")
-victreebel = Pokemon.create(nickname: "Victreebel", species: "Victreebel", element: "grass")
-exeggutor = Pokemon.create(nickname: "Exeggutor", species: "Exeggutor", element: "grass")
+venusaur = Pokemon.create(species: "Venusaur", element: "grass")
+vileplume = Pokemon.create(species: "Vileplume", element: "grass")
+parasect = Pokemon.create(species: "Parasect", element: "grass")
+victreebel = Pokemon.create(species: "Victreebel", element: "grass")
+exeggutor = Pokemon.create(species: "Exeggutor", element: "grass")
 
 # you can add the pokemon that you want by using the following line as an example 
 # edgar.pokemons << blatoise and then it will up on in the trainer_pokemons table

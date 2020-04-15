@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_225813) do
+ActiveRecord::Schema.define(version: 2020_04_15_010645) do
 
   create_table "pokemons", force: :cascade do |t|
-    t.string "nickname"
     t.string "species"
     t.string "element"
   end
