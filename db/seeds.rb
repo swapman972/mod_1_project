@@ -25,8 +25,9 @@ exeggutor = Pokemon.create(species: "Exeggutor", element: "grass")
 # edgar.pokemons << blatoise and then it will up on in the trainer_pokemons table
 # and edgar.pokemon
 
-jordan =Trainer.create(name:"Jordan")
-jordan.pokemons << blastoise
-jordan.pokemons << slowbro
-elias =Trainer.create(name:"Elias")
 edgar =Trainer.create(name:"Edgar")
+edgar.pokemons << blastoise
+jordan =Trainer.create(name:"Jordan")
+jordan.pokemons << arcanie
+jordan.pokemons << poliwarth
+elias =Trainer.create(name:"Elias")

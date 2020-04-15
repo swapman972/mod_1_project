@@ -18,13 +18,13 @@ class Battle
 		# 	battle_pokemon	
 		# else
 		puts "You are sending #{@battle_pokemon.species} to battle"
-
 	end
 
-    def computer_pokemon
-		pokemon = Trainer.all.first.pokemons.sample(1)
+    def computer_pokemon(id)
+		pokemon = Trainer.all.find(id).pokemons.sample(1)
         puts "Your challenger has chosen #{pokemon[0].species}"
         @chall_pokemon = pokemon[0]
+        binding.pry
 	end
 
     def run_game

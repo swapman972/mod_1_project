@@ -5,18 +5,23 @@ require 'pry'
 #n_name = nick_mane(user_input) that is if we want to add nick names later
 
 def run
-    battle = Battle.new
     user = welcome_user
     puts "Welcome to the Elite 3 #{user.name}!!"
     starter = pick_starter
     user.adding_starter_to_user(starter)
     puts "Awesome! #{starter} is now part of your team!!"
     outcome = nil
-    until outcome == "win" or outcome == "lose"
-        battle.choose_your_pokemon	
-        battle.computer_pokemon
-        outcome = battle.run_game
+    outcome = battle1
+    if outcome == "lose" then return "Sorry, you are not strong enough to move on to the next challenger"
+    elsif outcome == "tie" then return "You are stuck in a tie, try catching different pokemon elements"
     end
+    starter = pick_starter              #it should be a wild encounter here
+    user.adding_starter_to_user(starter)#here 
+    outcome = battle2
+    if outcome == "lose" then return
+    elsif outcome == "tie" then return 
+    end
+    #battle3
 end
 
 run
