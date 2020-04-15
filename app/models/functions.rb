@@ -47,9 +47,8 @@ def battle1
         elsif outcome == "lose" then lost += 1
         elsif outcome == "tie" then tie += 1
         end
-        puts "all your pokemons are healed, battle again"
     end
-    if win == 1 then puts "Congrats, you can move on to the final chanllenger"
+    if win == 1 then puts "Congrats, you can move on to the next challenger\n\n"
     end
    outcome        
 end
@@ -67,11 +66,10 @@ def battle2
         elsif outcome == "lose" then lost += 1
         elsif outcome == "tie" then tie += 1
         end
-        puts "all your pokemons are healed, battle again"
     end
-    if win == 2 then puts "Congrats, you can move on to the final chanllenger"
-    elsif lost == 2 then return puts "Sorry, you are not strong enough to move on to the next challenger"
-    elsif tie == 2 then return puts "You are stuck in a tie, try catching different pokemon elements"
+    if win == 2 then puts "Congrats, you can move on to the final challenger\n\n"
+    elsif lost == 2 then return puts "Sorry, you are not strong enough to move on to the next challenger\n\n"
+    elsif tie == 2 then return puts "You are stuck in a tie, try catching different pokemon elements\n\n"
     end
     outcome
 end
