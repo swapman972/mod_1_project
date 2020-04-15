@@ -11,13 +11,11 @@ def run
     starter = pick_starter
     user.adding_starter_to_user(starter)
     puts "Awesome! #{starter} is now part of your team!!"
-    while true
+    outcome = nil
+    until outcome == "win" or outcome == "lose"
         battle.choose_your_pokemon	
         battle.computer_pokemon
         outcome = battle.run_game
-        if outcome = "win" || "lost"
-            break 
-        end 
     end
 end
 

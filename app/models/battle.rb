@@ -45,7 +45,7 @@ class Battle
             outcome = "win"
 			puts "water beats fire - you won!"
         else
-            outcome = "lost" 
+            outcome = "lose" 
             puts "Unlucky, you lost!" 
         end
         outcome
