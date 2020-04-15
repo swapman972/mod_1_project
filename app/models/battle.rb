@@ -3,14 +3,20 @@ class Battle
     def initialize
         @battle_pokemon
         @chall_pokemon
+        @id_num
     end
     
     def	choose_your_pokemon
         user = Trainer.all.last
         puts user.pokemons
         puts "Choose a Pokemon from your team to start with"
-        puts user.pokemons.map {|p| p.species}
+        list_of_pokemons = user.pokemons.map {|p| p.species}
+        puts list_of_pokemons
         name = gets.chomp
+        until(list_of_pokemons.include?(name))
+            puts "Please choose a pokemon from your team."
+            name = gets.chomp
+        end
         @battle_pokemon = user.pokemons.find_by(species: name)
         # Interate to confirm that user has that user_ Use array.include? ("whatever we are looking for")
 		# if !(pokemon.element == "rock" || pokemon.element == "paper" || pokemon.element == "scissors")
@@ -20,12 +26,27 @@ class Battle
 		puts "You are sending #{@battle_pokemon.species} to battle"
 	end
 
-    def computer_pokemon(id)
-		pokemon = Trainer.all.find(id).pokemons.sample(1)
+    def computer_pokemon(id_num)
+        @id_num = id_num
+		pokemon = Trainer.all.find(@id_num).pokemons.sample(1)
         puts "Your challenger has chosen #{pokemon[0].species}"
         @chall_pokemon = pokemon[0]
-        binding.pry
-	end
+    end
+    #Trainer.all.find(2).id
+    #battle_pokemon.find_by(species: "Poliwarth").id
+    def remove_pokemon_from_user
+       pokemon_num = @battle_pokemon.id
+       trainer_num = Trainer.all.last.id
+       fainted_pokemon = TrainerPokemon.all.find_by(trainer_id: trainer_num, pokemon_id: pokemon_num)
+       fainted_pokemon.delete
+    end
+
+    def remove_pokemon_from_challenger
+        pokemon_num = @chall_pokemon.id
+        trainer_num = Trainer.all.find(@id_num).id
+        fainted_pokemon = TrainerPokemon.all.find_by(trainer_id: trainer_num, pokemon_id: pokemon_num)
+        fainted_pokemon.delete
+     end
 
     def run_game
         outcome = nil
@@ -36,15 +57,19 @@ class Battle
 			puts "It's a #{outcome}, please choose a different pokemon."
         elsif user_element == "fire" && chall_element== "grass"
             outcome = "win"
+            remove_pokemon_from_challenger
 			puts "fire beats grass - congrats you won!"
         elsif user_element == "grass" && chall_element == "water"
             outcome = "win"
+            remove_pokemon_from_challenger
             puts "grass beats water - congrats you won!"
         elsif user_element == "water" && chall_element == "fire"
             outcome = "win"
+            remove_pokemon_from_challenger
 			puts "water beats fire - congrats you won!"
         else
             outcome = "lose" 
+            remove_pokemon_from_user
             puts "Unlucky, you lost! Don't give up and try again." 
         end
         outcome

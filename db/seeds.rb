@@ -28,6 +28,6 @@ exeggutor = Pokemon.create(species: "Exeggutor", element: "grass")
 edgar =Trainer.create(name:"Edgar")
 edgar.pokemons << blastoise
 jordan =Trainer.create(name:"Jordan")
-jordan.pokemons << arcanie
 jordan.pokemons << poliwarth
+jordan.pokemons << arcanie
 elias =Trainer.create(name:"Elias")

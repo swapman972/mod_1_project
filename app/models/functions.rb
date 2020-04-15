@@ -62,7 +62,7 @@ def battle2
     until win == 2 or lost == 2 or tie == 2
         battling.choose_your_pokemon	
         battling.computer_pokemon(2)
-        outcome = battling.run_game
+        outcome = battling.run_game #
         if outcome == "win" then win += 1 
         elsif outcome == "lose" then lost += 1
         elsif outcome == "tie" then tie += 1
