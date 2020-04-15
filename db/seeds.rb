@@ -1,6 +1,7 @@
-Pokemon.delete_all
-Trainer.delete_all
-TrainerPokemon.delete_all
+    Pokemon.delete_all
+    Trainer.delete_all
+    TrainerPokemon.delete_all
+
 
 charmander = Pokemon.create(species: "Charizard", element: "fire")
 ninetales = Pokemon.create(species: "Ninetales", element: "fire")
