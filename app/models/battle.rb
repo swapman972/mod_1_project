@@ -1,14 +1,16 @@
-# class Battle
+class Battle
 
     def initialize
         @battle_pokemon
         @chall_pokemon
+        # @num
     end
     
     def	choose_your_pokemon
         user = Trainer.all.last
         puts user.pokemons
         puts "Choose your Pokemon from your team"
+        puts user.pokemons.map {|p| p.species}
         name = gets.chomp
         @battle_pokemon = user.pokemons.find_by(species: name)
         # Interate to confirm that user has that user_ Use array.include? ("whatever we are looking for")
@@ -17,12 +19,13 @@
 		# 	battle_pokemon	
 		# else
 			puts "You have chosen #{@battle_pokemon.species}"
-		end
+
 	end
 
-	def computer_pokemon
-		@chall_pokemon = [Trainer.all.first.pokemons].sample(1)
-		puts "Computer has chosen #{@chall_pokemon}"
+    def computer_pokemon
+		pokemon = Trainer.all.first.pokemons.sample(1)
+        puts "Computer has chosen #{pokemon[0].species}"
+        @chall_pokemon = pokemon[0]
 	end
 
     def run_game

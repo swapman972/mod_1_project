@@ -9,7 +9,7 @@ arcanie = Pokemon.create(species: "Arcanine", element: "fire")
 rapidash = Pokemon.create(species: "Rapidash", element: "fire")
 magmar = Pokemon.create(species: "Magmar", element: "fire")
 
-blatoise = Pokemon.create(species: "Blatoise", element: "water")
+blastoise = Pokemon.create(species: "Blastoise", element: "water")
 golduck = Pokemon.create(species: "Golduck", element: "water")
 poliwarth = Pokemon.create(species: "Poliwarth", element: "water")
 tentacruel = Pokemon.create(species: "Tentacruel", element: "water")
@@ -26,7 +26,7 @@ exeggutor = Pokemon.create(species: "Exeggutor", element: "grass")
 # and edgar.pokemon
 
 jordan =Trainer.create(name:"Jordan")
+jordan.pokemons << blastoise
+jordan.pokemons << slowbro
 elias =Trainer.create(name:"Elias")
 edgar =Trainer.create(name:"Edgar")
-edgar.pokemons << blatoise
-edgar.pokemons << slowbro

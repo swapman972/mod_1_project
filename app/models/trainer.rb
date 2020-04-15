@@ -8,8 +8,10 @@ def adding_starter_to_user(poke)
         venusaur = Pokemon.all.find {|p| p.species == "Venusaur"}
         self.pokemons << venusaur
     elsif poke == "Charizard"
+        charizard = Pokemon.all.find {|p| p.species == "Charizard"}
         self.pokemons << charizard
     elsif poke == "Blastoise"
+        blastoise = Pokemon.all.find {|p| p.species == "Blastoise"}
         self.pokemons << blastoise    
     end
 end
