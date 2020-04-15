@@ -21,7 +21,7 @@ end
 # In this def we are asking the user to pick a starter pokemon (which has to be one of the three to advance in the app)
 # then adding that pokemon to the pokemon table
 def pick_starter
-    puts "Pick a starter pokemon between Venusaur, Charizard and Blastoise"
+    puts "Pick a starter pokemon, you can choose between Venusaur, Charizard and Blastoise"
     user_input = gets.chomp
     until (user_input == "Venusaur" or user_input == "Charizard" or user_input == "Blastoise")
         puts "Please pick a starter pokemon between Venusaur, Charizard and Blastoise"
