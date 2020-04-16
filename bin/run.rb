@@ -20,14 +20,8 @@ def run
     puts "Welcome to the Elite 3 #{user.name}!!\n\n"
     starter = pick_starter
     user.add_pokemon_to_user(starter)
-    puts "Awesome! #{starter} is now part of your team!!"
-    outcome = nil
-    outcome = battle1
-    #helper method (outcome)
-    if outcome == "lose" then return "Sorry, you are not strong enough to move on to the next challenger"
-    elsif outcome == "tie" then return "You are stuck in a tie, try catching different pokemon elements" end
-    #to here
-
+    puts "Awesome! #{starter} is now part of your team!!\n\n"
+    
     #helper method (wild encouters)
     result_1 = wild_encounter([starter])
     puts "You run into a random #{result_1}. Do you want to catch it?" 
@@ -38,8 +32,9 @@ def run
     end
     if user_answer == "Yes" then user.add_pokemon_to_user(result_1) end
     #to here
-
-    outcome = battle2
+       
+    outcome = nil
+    outcome = battle1
     #helper method (outcome)
     if outcome == "lose" then return "Sorry, you are not strong enough to move on to the next challenger"
     elsif outcome == "tie" then return "You are stuck in a tie, try catching different pokemon elements" end
@@ -53,7 +48,26 @@ def run
         puts "Please enter 'Yes' or 'No'" 
         user_answer = gets.chomp
     end
-    if user_answer == "Yes" then user.add_pokemon_to_user(result_1) end
+    if user_answer == "Yes" then user.add_pokemon_to_user(result_2) end
+    #ends method
+
+    outcome = battle2
+    #helper method (outcome)
+    if outcome == "lose" then return "Sorry, you are not strong enough to move on to the next challenger"
+    elsif outcome == "tie" then return "You are stuck in a tie, try catching different pokemon elements" end
+    #to here
+
+    #helper method (wild encouters)
+    if user.pokemons.count < 3
+        result_3 = wild_encounter([starter=nil, result_1=nil, result_2=nil])
+        puts "You run into a random #{result_3}. Do you want to catch it?" 
+        user_answer = gets.chomp
+        until user_answer == "Yes" or user_answer == "No"
+            puts "Please enter 'Yes' or 'No'" 
+            user_answer = gets.chomp
+        end
+        if user_answer == "Yes" then user.add_pokemon_to_user(result_3) end
+    end
 
     #battle3
 end

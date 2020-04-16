@@ -30,9 +30,9 @@ def pick_starter
     user_input
 end
 
-def winning_condition
+# def winning_condition
     
-end
+# end
 
 def battle1
     battling = Battle.new
@@ -40,7 +40,11 @@ def battle1
     lost = 0
     tie = 0
     until win == 1 or lost == 2 or tie == 2
-        battling.choose_your_pokemon	
+        game_outcome = battling.choose_your_pokemon
+        if game_outcome == "GAME OVER"
+            lost += 1
+            break
+        end	
         battling.computer_pokemon(1)
         outcome = battling.run_game     
         if outcome == "win" then win += 1 
@@ -76,7 +80,7 @@ def battle2
     win = 0
     lost = 0
     tie = 0
-    until win == 2 or lost == 2 or tie == 2
+    until win == 2 or lost == 3 or tie == 3
         #gotta check if user has no more pokemons
         game_outcome = battling.choose_your_pokemon
         if game_outcome == "GAME OVER"
