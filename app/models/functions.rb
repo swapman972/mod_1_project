@@ -53,6 +53,22 @@ def battle1
    outcome        
 end
 
+def wild_encounter(pokemon_strings)
+    pokemon_array = Pokemon.where(species: pokemon_strings)
+    element_set = Set[]
+    for pokemon in pokemon_array do
+        element_set.add(pokemon.element)
+    end
+    valid_pokemon = Pokemon.where.not(element: element_set)
+    selected_pokemon = valid_pokemon[rand(valid_pokemon.size)].species 
+end
+
+def wild_encounters
+    starter = pick_starter
+    result_1 = wild_encounter([starter])
+    result_2 = wild_encounter([starter, result1])
+end
+
 def battle2
     battling = Battle.new
     win = 0
