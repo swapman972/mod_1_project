@@ -1,26 +1,9 @@
-# In this def we will ask the user for his name and add him to the trainer table
 def welcome_user
     puts "Hello new trainer, what is your name?"
     user_name = gets.chomp
     user = Trainer.create(name: user_name)
 end
 
-
-# This def is a helper method to request a nick name
-#def nick_name(poke)
-#    puts "Would you like to give #{poke} a nickname? yes or no?"
-#    answer = gets.chomp
-#    if answer == "yes"
-#        puts "What is #{poke}'s nickmane?"
-#        name = gets.chomp
-#    else
-#        name = "#{poke}"
-#    end
-#    name
-#end
-
-# In this def we are asking the user to pick a starter pokemon (which has to be one of the three to advance in the app)
-# then adding that pokemon to the pokemon table
 def pick_starter
     puts "Pick a starter pokemon, you can choose between Venusaur, Charizard and Blastoise"
     user_input = gets.chomp
@@ -31,8 +14,12 @@ def pick_starter
     user_input
 end
 
-# def winning_condition
-    
+# def wlt_counter(outcome, win, lost, tie)
+#     if outcome == "win" then win += 1 
+#     elsif outcome == "lose" then lost += 1
+#     elsif outcome == "tie" then tie += 1
+#         return win, lost, tie
+#     end
 # end
 
 def battle1
@@ -48,6 +35,7 @@ def battle1
         end	
         battling.computer_pokemon(1)
         outcome = battling.run_game     
+        # wlt_counter(outcome, win, lost, tie)
         if outcome == "win" then win += 1 
         elsif outcome == "lose" then lost += 1
         elsif outcome == "tie" then tie += 1
@@ -66,15 +54,12 @@ def wild_encounter(pokemon_strings)
     end
     valid_pokemon = Pokemon.where.not(element: element_set)
     selected_pokemon = valid_pokemon[rand(valid_pokemon.size)]
-    # binding.pry
-    # selected_pokemon
 end
 
-# def wild_encounters
-#     starter = pick_starter
-#     result_1 = wild_encounter([starter])
-#     result_2 = wild_encounter([starter, result1])
-# end
+def wild_encounter_result(user, result)
+    puts "You run into a random #{result.species}. He is now part of your team!!!!" 
+    user.add_pokemon_to_user(result.species)
+end
 
 def battle2
     battling = Battle.new
@@ -82,14 +67,14 @@ def battle2
     lost = 0
     tie = 0
     until win == 2 or lost == 3 or tie == 3
-        #gotta check if user has no more pokemons
         game_outcome = battling.choose_your_pokemon
         if game_outcome == "GAME OVER"
             lost += 1
             break
         end
         battling.computer_pokemon(2)
-        outcome = battling.run_game #
+        outcome = battling.run_game 
+        # wlt_counter(outcome, win, lost, tie)
         if outcome == "win" then win += 1 
         elsif outcome == "lose" then lost += 1
         elsif outcome == "tie" then tie += 1
@@ -108,7 +93,6 @@ def battle3
     lost = 0
     tie = 0
     until win == 3 or lost == 3 or tie == 5
-        #gotta check if user has no more pokemons
         game_outcome = battling.choose_your_pokemon
         if game_outcome == "GAME OVER"
             lost += 1
@@ -116,6 +100,7 @@ def battle3
         end
         battling.computer_pokemon(3)
         outcome = battling.run_game #
+        # wlt_counter(outcome, win, lost, tie)
         if outcome == "win" then win += 1 
         elsif outcome == "lose" then lost += 1
         elsif outcome == "tie" then tie += 1

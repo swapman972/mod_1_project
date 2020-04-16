@@ -8,8 +8,6 @@ class Battle
     
     def	choose_your_pokemon
         user = Trainer.all.last
-        #puts user.pokemons
-        # that are not fainted (fainted == false)
         trainer_pokemon_not_fainted = TrainerPokemon.all.where(trainer_id: user.id, fainted: false)
         list_of_pokemons = trainer_pokemon_not_fainted.map{|p| Pokemon.find_by(id: p.pokemon_id).species}
 
@@ -26,11 +24,6 @@ class Battle
             name = gets.chomp
         end
         @battle_pokemon = user.pokemons.find_by(species: name)
-        # Interate to confirm that user has that user_ Use array.include? ("whatever we are looking for")
-		# if !(pokemon.element == "rock" || pokemon.element == "paper" || pokemon.element == "scissors")
-		# 	puts "That's not rock, paper or scissors! Try again..."
-		# 	battle_pokemon	
-		# else
 		puts "\n\nYou are sending #{@battle_pokemon.species} to battle"
 	end
 
@@ -40,8 +33,7 @@ class Battle
         puts "Your challenger has chosen #{pokemon[0].species}"
         @chall_pokemon = pokemon[0]
     end
-    #Trainer.all.find(2).id
-    #battle_pokemon.find_by(species: "Poliwarth").id
+
     def remove_pokemon_from_user
        pokemon_num = @battle_pokemon.id
        trainer_num = Trainer.all.last.id

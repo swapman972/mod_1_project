@@ -2,7 +2,6 @@
     Trainer.delete_all
     TrainerPokemon.delete_all
 
-
 charmander = Pokemon.create(species: "Charizard", element: "fire")
 ninetales = Pokemon.create(species: "Ninetales", element: "fire")
 arcanie = Pokemon.create(species: "Arcanine", element: "fire")
@@ -20,14 +19,3 @@ vileplume = Pokemon.create(species: "Vileplume", element: "grass")
 parasect = Pokemon.create(species: "Parasect", element: "grass")
 victreebel = Pokemon.create(species: "Victreebel", element: "grass")
 exeggutor = Pokemon.create(species: "Exeggutor", element: "grass")
-
-# you can add the pokemon that you want by using the following line as an example 
-# edgar.pokemons << blatoise and then it will up on in the trainer_pokemons table
-# and edgar.pokemon
-
-# edgar =Trainer.create(name:"Edgar")
-# edgar.pokemons << blastoise
-# jordan =Trainer.create(name:"Jordan")
-# jordan.pokemons << poliwarth
-# jordan.pokemons << arcanie
-# elias =Trainer.create(name:"Elias")
