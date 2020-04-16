@@ -64,7 +64,7 @@ def wild_encounter(pokemon_strings)
         element_set.add(pokemon.element)
     end
     valid_pokemon = Pokemon.where.not(element: element_set)
-    selected_pokemon = valid_pokemon[rand(valid_pokemon.size)].species 
+    selected_pokemon = valid_pokemon[rand(valid_pokemon.size)]
     # binding.pry
     # selected_pokemon
 end

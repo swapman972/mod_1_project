@@ -9,9 +9,10 @@ class Battle
     def	choose_your_pokemon
         user = Trainer.all.last
         #puts user.pokemons
-        list_of_pokemons = user.pokemons.map do |p| 
-            p.species if user.pokemons.fainted == false
-        end
+        # that are not fainted (fainted == false)
+        trainer_pokemon_not_fainted = TrainerPokemon.all.where(trainer_id: user.id, fainted: false)
+        list_of_pokemons = trainer_pokemon_not_fainted.map{|p| Pokemon.all.find_by(id: p.pokemon_id).species}
+
         if list_of_pokemons.count == 0
             puts "All your pockemon are fainted..."  
             game_over = "GAME OVER"
@@ -46,6 +47,8 @@ class Battle
        trainer_num = Trainer.all.last.id
        fainted_pokemon = TrainerPokemon.all.find_by(trainer_id: trainer_num, pokemon_id: pokemon_num)
        fainted_pokemon.fainted = true
+       fainted_pokemon.save
+       binding.pry
     end
 
     def remove_pokemon_from_challenger
