@@ -11,7 +11,7 @@ class Battle
         #puts user.pokemons
         # that are not fainted (fainted == false)
         trainer_pokemon_not_fainted = TrainerPokemon.all.where(trainer_id: user.id, fainted: false)
-        list_of_pokemons = trainer_pokemon_not_fainted.map{|p| Pokemon.all.find_by(id: p.pokemon_id).species}
+        list_of_pokemons = trainer_pokemon_not_fainted.map{|p| Pokemon.find_by(id: p.pokemon_id).species}
 
         if list_of_pokemons.count == 0
             puts "All your pockemon are fainted..."  
