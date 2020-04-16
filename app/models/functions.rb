@@ -120,13 +120,13 @@ def savage_encouter(result_1)
     puts "A wild #{result_1.species} appeared!" 
     sleep(2)
     print "You try to catch it"
-    sleep(1.5)
+    sleep(0.5)
     print "..."
-    sleep(1)
+    sleep(0.5)
     print "......"
-    sleep(1)
+    sleep(0.5)
     print "........." 
-    sleep(1) 
+    sleep(1.5) 
     print "Gotcha!"
     sleep(1.2)
     puts "\n#{result_1.species} is now part of your team!!!!"
