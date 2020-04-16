@@ -5,6 +5,7 @@ def welcome_user
     user = Trainer.create(name: user_name)
 end
 
+
 # This def is a helper method to request a nick name
 #def nick_name(poke)
 #    puts "Would you like to give #{poke} a nickname? yes or no?"
@@ -95,8 +96,34 @@ def battle2
         end
     end
     if win == 2 then puts "Congrats, you can move on to the final challenger\n\n"
-    elsif lost == 2 then return outcome
-    elsif tie == 2 then return outcome
+    elsif lost == 3 then return outcome
+    elsif tie == 3 then return outcome
+    end
+    outcome
+end
+
+def battle3
+    battling = Battle.new
+    win = 0
+    lost = 0
+    tie = 0
+    until win == 3 or lost == 3 or tie == 5
+        #gotta check if user has no more pokemons
+        game_outcome = battling.choose_your_pokemon
+        if game_outcome == "GAME OVER"
+            lost += 1
+            break
+        end
+        battling.computer_pokemon(3)
+        outcome = battling.run_game #
+        if outcome == "win" then win += 1 
+        elsif outcome == "lose" then lost += 1
+        elsif outcome == "tie" then tie += 1
+        end
+    end
+    if win == 3 then puts "Congrats, you beat the elite 3. You are the new champion!!!\n\n"
+    elsif lost == 3 then return outcome
+    elsif tie == 5 then return outcome
     end
     outcome
 end

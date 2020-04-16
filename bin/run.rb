@@ -9,10 +9,12 @@ def initialize_chalengers
     edgar = Trainer.create(name:"Edgar")
     edgar.pokemons << Pokemon.all.find_by(species: "Blastoise", element: "water")
     jordan = Trainer.create(name:"Jordan")
-    # jordan.pokemons << Pokemon.all.find_by(species: "Poliwarth", element: "water") Just so the second challenger only has fire type
-    jordan.pokemons << Pokemon.all.find_by(species: "Ninetales", element: "fire")
+    jordan.pokemons << Pokemon.all.find_by(species: "Poliwarth", element: "water")
     jordan.pokemons << Pokemon.all.find_by(species: "Arcanine", element: "fire")
     elias =Trainer.create(name:"Elias")
+    elias.pokemons << Pokemon.all.find_by(species: "Magmar", element: "fire")
+    elias.pokemons << Pokemon.all.find_by(species: "Blastoise", element: "water")
+    elias.pokemons << Pokemon.all.find_by(species: "Victreebel", element: "grass")
 end
 
 def run
@@ -39,10 +41,10 @@ def run
     outcome = nil
     outcome = battle1
 
-    #helper method (outcome)
-    if outcome == "lose" then return "Sorry, you are not strong enough to move on to the next challenger"
-    elsif outcome == "tie" then return "You are stuck in a tie, try catching different pokemon elements" end
-    #to here
+    # def lose_ti(outcome)
+    #     if outcome == "lose" then return "Sorry, you are not strong enough to move on to the next challenger"
+    #     elsif outcome == "tie" then return "You are stuck in a tie, try catching different pokemon elements" end
+    # end
     starter_fainted_status = TrainerPokemon.find_by(trainer_id: user.id, pokemon_id: starter.id).fainted
     result_1_fainted_status = TrainerPokemon.all.find_by(trainer_id: user.id, pokemon_id: result_1.id).fainted
 
@@ -110,39 +112,15 @@ def run
             puts "You run into a random #{result_3.species}. He is now part of your team!!!!" 
             user.add_pokemon_to_user(result_3.species)
 
-            # puts "You run into a random #{result_3}. Do you want to catch it?" 
-            # user_answer = gets.chomp
-            # until user_answer == "Yes" or user_answer == "No"
-            # puts "Please enter 'Yes' or 'No'" 
-            # user_answer = gets.chomp
-            # end
-            # if user_answer == "Yes" then user.add_pokemon_to_user(result_3) end
-
         elsif result_1_fainted_status == true
             result_3 = wild_encounter([starter.species, result_2.species])
             puts "You run into a random #{result_3.species}. He is now part of your team!!!!" 
             user.add_pokemon_to_user(result_3.species)
 
-            # puts "You run into a random #{result_3}. Do you want to catch it?" 
-            # user_answer = gets.chomp
-            # until user_answer == "Yes" or user_answer == "No"
-            # puts "Please enter 'Yes' or 'No'" 
-            # user_answer = gets.chomp
-            # end
-            # if user_answer == "Yes" then user.add_pokemon_to_user(result_3) end
-
         elsif result_2_fainted_status == true
             result_3 = wild_encounter([starter.species, result_1.species])
             puts "You run into a random #{result_3.species}. He is now part of your team!!!!" 
             user.add_pokemon_to_user(result_3.species)
-
-            # puts "You run into a random #{result_3}. Do you want to catch it?" 
-            # user_answer = gets.chomp
-            # until user_answer == "Yes" or user_answer == "No"
-            # puts "Please enter 'Yes' or 'No'" 
-            # user_answer = gets.chomp
-            # end
-            # if user_answer == "Yes" then user.add_pokemon_to_user(result_3) end
         end
 
     elsif TrainerPokemon.where(trainer_id: user.id, fainted: false).count == 1
@@ -151,26 +129,10 @@ def run
             puts "You run into a random #{result_3.species}. He is now part of your team!!!!" 
             user.add_pokemon_to_user(result_3.species)
 
-            # puts "You run into a random #{result_3}. Do you want to catch it?" 
-            # user_answer = gets.chomp
-            # until user_answer == "Yes" or user_answer == "No"
-            # puts "Please enter 'Yes' or 'No'" 
-            # user_answer = gets.chomp
-            # end
-            # if user_answer == "Yes" then user.add_pokemon_to_user(result_3) end
-
         elsif result_1_fainted_status == true && result_2_fainted_status == true
             result_3 = wild_encounter([starter.species])
             puts "You run into a random #{result_3.species}. He is now part of your team!!!!" 
             user.add_pokemon_to_user(result_3.species)
-
-            # puts "You run into a random #{result_3}. Do you want to catch it?" 
-            # user_answer = gets.chomp
-            # until user_answer == "Yes" or user_answer == "No"
-            # puts "Please enter 'Yes' or 'No'" 
-            # user_answer = gets.chomp
-            # end
-            # if user_answer == "Yes" then user.add_pokemon_to_user(result_3) end
 
         elsif result_2_fainted_status == true && starter_fainted_status == true
             result_3 = wild_encounter([result_1.species])
@@ -187,7 +149,11 @@ def run
         end
     end
        
-            #battle3
+    #battle3
+    outcome = battle3
+    #helper method (outcome)
+    if outcome == "lose" then return "Sorry, you are not strong enough to move on to the next challenger"
+    elsif outcome == "tie" then return "You are stuck in a tie, try catching different pokemon elements" end
 end
 
     
