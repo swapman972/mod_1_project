@@ -11,6 +11,10 @@ class Battle
         #puts user.pokemons
         puts "\n\nChoose a Pokemon from your team to batlle with"
         list_of_pokemons = user.pokemons.map {|p| p.species}
+        if list_of_pokemons.count == 0  
+            game_over = "GAME OVER"
+            return game_over
+        end
         puts list_of_pokemons.join(", ")
         name = gets.chomp
         until(list_of_pokemons.include?(name))

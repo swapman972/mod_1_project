@@ -61,13 +61,15 @@ def wild_encounter(pokemon_strings)
     end
     valid_pokemon = Pokemon.where.not(element: element_set)
     selected_pokemon = valid_pokemon[rand(valid_pokemon.size)].species 
+    # binding.pry
+    # selected_pokemon
 end
 
-def wild_encounters
-    starter = pick_starter
-    result_1 = wild_encounter([starter])
-    result_2 = wild_encounter([starter, result1])
-end
+# def wild_encounters
+#     starter = pick_starter
+#     result_1 = wild_encounter([starter])
+#     result_2 = wild_encounter([starter, result1])
+# end
 
 def battle2
     battling = Battle.new
@@ -75,7 +77,8 @@ def battle2
     lost = 0
     tie = 0
     until win == 2 or lost == 2 or tie == 2
-        battling.choose_your_pokemon	
+        #gotta check if user has no more pokemons
+        user_list_of_pokemon = battling.choose_your_pokemon
         battling.computer_pokemon(2)
         outcome = battling.run_game #
         if outcome == "win" then win += 1 
@@ -84,8 +87,8 @@ def battle2
         end
     end
     if win == 2 then puts "Congrats, you can move on to the final challenger\n\n"
-    elsif lost == 2 then return puts "Sorry, you are not strong enough to move on to the next challenger\n\n"
-    elsif tie == 2 then return puts "You are stuck in a tie, try catching different pokemon elements\n\n"
+    elsif lost == 2 then return outcome
+    elsif tie == 2 then return outcome
     end
     outcome
 end
