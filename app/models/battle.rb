@@ -16,7 +16,9 @@ class Battle
             game_over = "GAME OVER"
             return game_over
         end
-        puts "\n\nChoose a Pokemon from your team to battle with"
+        puts "\nTime for battle!"
+        sleep(1.8)
+        puts "Choose a Pokemon to battle with:"
         puts list_of_pokemons.join(", ")
         name = gets.chomp
         until(list_of_pokemons.include?(name))
@@ -24,13 +26,15 @@ class Battle
             name = gets.chomp
         end
         @battle_pokemon = user.pokemons.find_by(species: name)
-		puts "\n\nYou are sending #{@battle_pokemon.species} to battle"
+        puts "\nYou chose to send #{@battle_pokemon.species} to battle"
+        sleep(1.8)
 	end
 
     def computer_pokemon(id_num)
         @id_num = id_num
         pokemon = Trainer.all.find(@id_num).pokemons.sample(1)
         puts "Your challenger has chosen #{pokemon[0].species}"
+        sleep(1.8)
         @chall_pokemon = pokemon[0]
     end
 
@@ -55,19 +59,19 @@ class Battle
         chall_element = @chall_pokemon.element
         if user_element == chall_element
             outcome = "tie"
-			puts "It's a #{outcome}, please choose a different pokemon."
+			puts "It's a #{outcome}, please choose another pokemon."
         elsif user_element == "fire" && chall_element== "grass"
             outcome = "win"
             remove_pokemon_from_challenger
-			puts "Fire beats grass - congrats you won!"
+			puts "\nFire beats grass - you won!"
         elsif user_element == "grass" && chall_element == "water"
             outcome = "win"
             remove_pokemon_from_challenger
-            puts "Grass beats water - congrats you won!"
+            puts "\nGrass beats water - you won!"
         elsif user_element == "water" && chall_element == "fire"
             outcome = "win"
             remove_pokemon_from_challenger
-			puts "Water beats fire - congrats you won!"
+			puts "\nWater beats fire - you won!"
         else
             outcome = "lose" 
             remove_pokemon_from_user

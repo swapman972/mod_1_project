@@ -19,14 +19,13 @@ end
 def run
     user = welcome_user
     puts "Welcome to the Elite 3, #{user.name}!!\n\n"
+    sleep(2)
     starter = Pokemon.all.find_by(species: pick_starter)
     user.add_pokemon_to_user(starter.species)
-
-    puts "Awesome! #{starter.species} is now part of your team!!\n\n"
-    
-    #helper method (wild encouters)
+    puts "Great choice! #{starter.species} is now part of your team!!\n\n"
+    sleep(2)
     result_1 = wild_encounter([starter.species])
-    puts "You run into a random #{result_1.species}. He is now part of your team!!!!" 
+    savage_encouter(result_1) #extra method for neatnesss
     user.add_pokemon_to_user(result_1.species)
        
     outcome = nil
@@ -39,7 +38,6 @@ def run
     result_1_fainted_status = TrainerPokemon.all.find_by(trainer_id: user.id, pokemon_id: result_1.id).fainted
 
     if TrainerPokemon.where(trainer_id: user.id, fainted: false).count == 1
-        binding.pry
         if starter_fainted_status == true
             result_2 = wild_encounter([result_1.species])
             wild_encounter_result(user, result_2)

@@ -1,5 +1,5 @@
 def welcome_user
-    puts "Hello new trainer, what is your name?"
+    puts "Hello young trainer, what is your name?"
     user_name = gets.chomp
     user = Trainer.create(name: user_name)
 end
@@ -21,6 +21,20 @@ end
 #         return win, lost, tie
 #     end
 # end
+def wild_encounter(pokemon_strings)
+    pokemon_array = Pokemon.where(species: pokemon_strings)
+    element_set = Set[]
+    for pokemon in pokemon_array do
+        element_set.add(pokemon.element)
+    end
+    valid_pokemon = Pokemon.where.not(element: element_set)
+    selected_pokemon = valid_pokemon[rand(valid_pokemon.size)]
+end
+
+def wild_encounter_result(user, result)
+    savage_encouter(result)
+    user.add_pokemon_to_user(result.species)
+end
 
 def battle1
     battling = Battle.new
@@ -41,25 +55,11 @@ def battle1
         elsif outcome == "tie" then tie += 1
         end
     end
-    if win == 1 then puts "Congrats, you can move on to the next challenger\n\n"
-    end
+    if win == 1 then puts "Congrats, you can move on to the next challenger\n\n" end
+    sleep(3)
    outcome        
 end
 
-def wild_encounter(pokemon_strings)
-    pokemon_array = Pokemon.where(species: pokemon_strings)
-    element_set = Set[]
-    for pokemon in pokemon_array do
-        element_set.add(pokemon.element)
-    end
-    valid_pokemon = Pokemon.where.not(element: element_set)
-    selected_pokemon = valid_pokemon[rand(valid_pokemon.size)]
-end
-
-def wild_encounter_result(user, result)
-    puts "You run into a random #{result.species}. He is now part of your team!!!!" 
-    user.add_pokemon_to_user(result.species)
-end
 
 def battle2
     battling = Battle.new
@@ -84,6 +84,7 @@ def battle2
     elsif lost == 3 then return outcome
     elsif tie == 3 then return outcome
     end
+    sleep(3)
     outcome
 end
 
@@ -106,9 +107,28 @@ def battle3
         elsif outcome == "tie" then tie += 1
         end
     end
-    if win == 3 then puts "Congrats, you beat the elite 3. You are the new champion!!!\n\n"
+    if win == 3 then puts "Congrats, you just beat the elite 3! You are the new champion!!!\n\n"
     elsif lost == 3 then return outcome
     elsif tie == 5 then return outcome
     end
+    sleep(3)
     outcome
+end
+
+#extra methods for nice output
+def savage_encouter(result_1)
+    puts "A wild #{result_1.species} appeared!" 
+    sleep(2)
+    print "You try to catch it"
+    sleep(1.5)
+    print "..."
+    sleep(1)
+    print "......"
+    sleep(1)
+    print "........." 
+    sleep(1) 
+    print "Gotcha!"
+    sleep(1.2)
+    puts "\n#{result_1.species} is now part of your team!!!!"
+    sleep(1.8)
 end
