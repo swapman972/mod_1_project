@@ -18,7 +18,7 @@ class Battle
             game_over = "GAME OVER"
             return game_over
         end
-        puts "\n\nChoose a Pokemon from your team to batlle with"
+        puts "\n\nChoose a Pokemon from your team to battle with"
         puts list_of_pokemons.join(", ")
         name = gets.chomp
         until(list_of_pokemons.include?(name))
@@ -48,7 +48,6 @@ class Battle
        fainted_pokemon = TrainerPokemon.all.find_by(trainer_id: trainer_num, pokemon_id: pokemon_num)
        fainted_pokemon.fainted = true
        fainted_pokemon.save
-       binding.pry
     end
 
     def remove_pokemon_from_challenger
