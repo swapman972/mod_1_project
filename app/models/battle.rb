@@ -9,12 +9,13 @@ class Battle
     def	choose_your_pokemon
         user = Trainer.all.last
         #puts user.pokemons
-        puts "\n\nChoose a Pokemon from your team to batlle with"
         list_of_pokemons = user.pokemons.map {|p| p.species}
-        if list_of_pokemons.count == 0  
+        if list_of_pokemons.count == 0
+            puts "All your pockemon are fainted..."  
             game_over = "GAME OVER"
             return game_over
         end
+        puts "\n\nChoose a Pokemon from your team to batlle with"
         puts list_of_pokemons.join(", ")
         name = gets.chomp
         until(list_of_pokemons.include?(name))

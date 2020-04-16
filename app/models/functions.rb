@@ -78,7 +78,11 @@ def battle2
     tie = 0
     until win == 2 or lost == 2 or tie == 2
         #gotta check if user has no more pokemons
-        user_list_of_pokemon = battling.choose_your_pokemon
+        game_outcome = battling.choose_your_pokemon
+        if game_outcome == "GAME OVER"
+            lost += 1
+            break
+        end
         battling.computer_pokemon(2)
         outcome = battling.run_game #
         if outcome == "win" then win += 1 
