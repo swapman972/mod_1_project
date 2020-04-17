@@ -4,6 +4,13 @@ require 'pry'
 
 # This is where we reset the datatables and tie the relationship between the pokemons 
 # and the trainers
+
+def pokemon_art(art_file)
+    File.readlines(art_file) do |line|
+      puts line
+    end.each {|line| puts line}
+end
+
 def initialize_chalengers
     Trainer.delete_all
     TrainerPokemon.delete_all
@@ -21,6 +28,7 @@ def initialize_chalengers
 end
 
 def run
+    pokemon_art("art.txt")
     user = welcome_user
     puts "Welcome to the Elite 3, #{user.name}!!\n\n"
     sleep(2)

@@ -4,9 +4,20 @@ def welcome_user
     user = Trainer.create(name: user_name)
 end
 
+def pokemon_art(art_file)
+    File.readlines(art_file) do |line|
+      puts line
+    end.each {|line| puts line}
+end
 
 def pick_starter
-    puts "Pick a starter pokemon, you can choose between Venusaur, Charizard and Blastoise"
+    pokemon_art("Venusaur")
+    sleep(1)
+    pokemon_art("Blastoise")
+    sleep(1)
+    pokemon_art("Charizard")
+    sleep(1)
+    puts "Pick a starter pokemon, you can choose between Venusaur, Blastoise and Charizard"
     user_input = gets.chomp
     until (user_input == "Venusaur" or user_input == "Charizard" or user_input == "Blastoise")
         puts "Please pick a starter pokemon between Venusaur, Charizard and Blastoise"
@@ -14,7 +25,6 @@ def pick_starter
     end
     user_input
 end
-
 
 def wild_encounter(pokemon_strings)
     pokemon_array = Pokemon.where(species: pokemon_strings)
