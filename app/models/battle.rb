@@ -59,7 +59,7 @@ class Battle
         chall_element = @chall_pokemon.element
         if user_element == chall_element
             outcome = "tie"
-			puts "It's a #{outcome}, please choose another pokemon."
+			puts "It's a #{outcome}."
         elsif user_element == "fire" && chall_element== "grass"
             outcome = "win"
             remove_pokemon_from_challenger

@@ -7,7 +7,5 @@ class Trainer < ActiveRecord::Base
         pokemon = Pokemon.all.find {|p| p.species == poke}
             self.pokemons << pokemon
     end
-    # def select_pokemon
-    #     puts self.pokemons
-    # end
+
 end

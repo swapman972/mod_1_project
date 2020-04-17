@@ -4,6 +4,7 @@ def welcome_user
     user = Trainer.create(name: user_name)
 end
 
+
 def pick_starter
     puts "Pick a starter pokemon, you can choose between Venusaur, Charizard and Blastoise"
     user_input = gets.chomp
@@ -14,13 +15,7 @@ def pick_starter
     user_input
 end
 
-# def wlt_counter(outcome, win, lost, tie)
-#     if outcome == "win" then win += 1 
-#     elsif outcome == "lose" then lost += 1
-#     elsif outcome == "tie" then tie += 1
-#         return win, lost, tie
-#     end
-# end
+
 def wild_encounter(pokemon_strings)
     pokemon_array = Pokemon.where(species: pokemon_strings)
     element_set = Set[]
@@ -36,6 +31,7 @@ def wild_encounter_result(user, result)
     user.add_pokemon_to_user(result.species)
 end
 
+# First battle win condition is to win at least 1 instance
 def battle1
     battling = Battle.new
     win = 0
@@ -49,7 +45,6 @@ def battle1
         end	
         battling.computer_pokemon(1)
         outcome = battling.run_game     
-        # wlt_counter(outcome, win, lost, tie)
         if outcome == "win" then win += 1 
         elsif outcome == "lose" then lost += 1
         elsif outcome == "tie" then tie += 1
@@ -60,7 +55,7 @@ def battle1
    outcome        
 end
 
-
+# Second battle win condition is to win at least 2 instance
 def battle2
     battling = Battle.new
     win = 0
@@ -74,7 +69,6 @@ def battle2
         end
         battling.computer_pokemon(2)
         outcome = battling.run_game 
-        # wlt_counter(outcome, win, lost, tie)
         if outcome == "win" then win += 1 
         elsif outcome == "lose" then lost += 1
         elsif outcome == "tie" then tie += 1
@@ -88,6 +82,7 @@ def battle2
     outcome
 end
 
+# Final battle win condition is to win at least 3 instance
 def battle3
     battling = Battle.new
     win = 0
@@ -101,7 +96,6 @@ def battle3
         end
         battling.computer_pokemon(3)
         outcome = battling.run_game #
-        # wlt_counter(outcome, win, lost, tie)
         if outcome == "win" then win += 1 
         elsif outcome == "lose" then lost += 1
         elsif outcome == "tie" then tie += 1
@@ -116,8 +110,8 @@ def battle3
 end
 
 #extra methods for nice output
-def savage_encouter(result_1)
-    puts "A wild #{result_1.species} appeared!" 
+def savage_encouter(pokemon)
+    puts "A wild #{pokemon.species} appeared!" 
     sleep(2)
     print "You try to catch it"
     sleep(0.5)
@@ -129,6 +123,6 @@ def savage_encouter(result_1)
     sleep(1.5) 
     print "Gotcha!"
     sleep(1.2)
-    puts "\n#{result_1.species} is now part of your team!!!!"
+    puts "\n#{pokemon.species} is now part of your team!!!!"
     sleep(1.8)
 end

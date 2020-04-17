@@ -2,18 +2,22 @@ require 'rest-client'
 require_relative '../config/environment'
 require 'pry'
 
+# This is where we reset the datatables and tie the relationship between the pokemons 
+# and the trainers
 def initialize_chalengers
     Trainer.delete_all
     TrainerPokemon.delete_all
     edgar = Trainer.create(name:"Edgar")
-    edgar.pokemons << Pokemon.all.find_by(species: "Blastoise", element: "water")
+    edgar.add_pokemon_to_user("Blastoise")
+
     jordan = Trainer.create(name:"Jordan")
-    jordan.pokemons << Pokemon.all.find_by(species: "Poliwarth", element: "water")
-    jordan.pokemons << Pokemon.all.find_by(species: "Arcanine", element: "fire")
-    elias =Trainer.create(name:"Elias")
-    elias.pokemons << Pokemon.all.find_by(species: "Magmar", element: "fire")
-    elias.pokemons << Pokemon.all.find_by(species: "Blastoise", element: "water")
-    elias.pokemons << Pokemon.all.find_by(species: "Victreebel", element: "grass")
+    jordan.add_pokemon_to_user("Arcanine")
+    jordan.add_pokemon_to_user("Poliwarth")
+
+    elias = Trainer.create(name:"Elias")
+    elias.add_pokemon_to_user("Magmar")
+    elias.add_pokemon_to_user("Blastoise")
+    elias.add_pokemon_to_user("Victreebel")
 end
 
 def run

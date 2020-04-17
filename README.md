@@ -1,1 +1,9 @@
 # mod_1_project
+Hopeful pokemon trainers from all over the Kanto region travel to Indigo Plateau in order to challenge the Elite 3. These three legendary Pokemon trainers have trained their mind, body, and soul to be in unison with that of their Pokemon. Edgar, the first of the Elite 3, is the youngest of the elite 3 but his vast power is not to be underestimated. If you manage to defeat Edgar, you will face Jordan. He is a trainer who has had over 10,000 Pokemon battles but has only lost a single battle. He lost this battle to the mysterious leader of the Elite 3: Elias. Only rumors exist of Elias’ existence, and yet his name strikes true fear into the hearts of trainers and pokemon alike. Will you manage to defeat these legends and etch your name into Pokemon history?
+
+This program will allow you to challenge the Elite 3. Every challenger must provide their names and choose their starter Pokemon. They have the option of choosing Venusaur, Charizard, or Blastoise. Afterwards, the trainer will have a wild encounter with a pokemon that will join their ambitious team. The pokemon will be of an element that differs from their starter pokemon. After their team is assembled, they will face Edgar.
+
+# Instructions
+The rules pertaining any battle of the Elite 3 are simple. There are three elements: grass, fire, and water. Counter the element of the opposing pokemon to win. If one of your pokemon faints, you will lose that pokemon. If all of your pokemon faint, you lose. If you defeat their pokemon, you win. After each battle up until the final battle, you will have an encounter with a pokemon that will join your team. This pokemon will be of a different element than the pokemon currently in your roster.
+
+May the strongest roster prevail!
